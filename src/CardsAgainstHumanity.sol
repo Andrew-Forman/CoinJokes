@@ -8,11 +8,12 @@ contract CardsAgainstHumanity {
         REVEAL
     }
 
-    struct Player {
+    struct userId {
         address payable playerAddress;
-        string answer;
-        bool hasAnswered;
+        bool role;
+        uint credits;
     }
+    //string answer;
 
     struct Game {
         GameState state;
@@ -24,13 +25,34 @@ contract CardsAgainstHumanity {
     }
 
     uint256 public currentGameId = 0;
+    uint public maxDeposit;
+
     mapping(uint256 => Game) public games;
+    mapping (address => uint) public balanceOf;
+    // CreditsSubject => (User => Balance)
+    mapping(address => mapping(uint256 => uint256)) public creditsBalance;
+
 
     // Events
     event NewGame(uint256 gameId, address judge, string prompt);
     event PlayerJoined(uint256 gameId, address player);
     event GameAdvanced(uint256 gameId, GameState newState);
     event WinnerDeclared(uint256 gameId, address winner);
+
+    function createAccount(address _addr, uint Ids) returns userId {}
+ 
+    function deposit (uint _amount) external {
+        uint 
+    }
+
+    function balanceOf(address account) external {}
+
+    function addCredit(uint id, uint ) private {
+        userCredits += _credits;
+        balanceOf[_to] += _credits;
+    }
+
+    
 
     // Start a new game with a random prompt
     function startGame() external payable {
